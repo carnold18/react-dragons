@@ -7,7 +7,12 @@ class War extends Component{
         return (
             <div style={{float:'left', width:'40%', padding:'5%', backgroundColor:'#f98181'}}>
                 <h1>War</h1>
-                Render Dragons Here
+                {this.props.warDragons.map(dragon => (
+                <div onClick={event => this.props.handleClick2(dragon)} >
+                    <h2 key={dragon.id}>{dragon.name}</h2>
+                    <img src={dragon.image} alt="" width="80%"></img>
+                </div>
+            ))}
             </div>
         )
     }
