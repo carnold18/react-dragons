@@ -9,6 +9,7 @@ class App extends Component {
     this.state = {
       dragons: [],
       warDragons: [],
+      input: null
     }
   }
 
@@ -42,11 +43,20 @@ class App extends Component {
       })
   }
 
+  searchDragons = (event) => {
+    event.preventDefault()
+    let dragonName = event.target.children[0].value
+    let foundDragon = this.state.dragons.find(dragon => {return dragon.name === dragonName})
+    this.setState({
+      dragons: [foundDragon]
+    })
+  }
+
   render() {
     // console.log(this.state)
     return (
       <div>
-        <Home dragons={this.state.dragons} handleClick={this.handleClick}/>
+        <Home dragons={this.state.dragons} handleClick={this.handleClick} searchDragons={this.searchDragons}/>
         <War warDragons={this.state.warDragons} handleClick2={this.handleClick2}/>
       </div>
     );
